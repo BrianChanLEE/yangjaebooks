@@ -1,0 +1,200 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Style Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .slider {
+            width: auto; /* 슬라이더 크기를 이미지에 맞추기 위해 auto 설정 */
+            max-width: 500px; /* 최대 크기 설정 */
+            margin: 0 auto;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto; /* 이미지 비율 유지 */
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slick-prev, .slick-next {
+            font-size: 20px;
+            z-index: 1;
+        }
+
+        .slick-prev:before, .slick-next:before {
+            color: black;
+        }
+
+        .slider-text {
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div>
+            <img src="/images/nwt_KO_lg.jpg" alt="Bible">
+            <div class="slider-text">"성경"</div>
+        </div>
+        <div>
+            <img src="/images/202016408_KO_cnt_1_md.jpg" alt="2020 Magazine">
+            <div class="slider-text">"봉사도구함"</div>
+        </div>
+        <div>
+            <img src="/images/bh_KO_lg.jpg" alt="Bible History">
+            <div class="slider-text">"서적"</div>
+        </div>
+        <div>
+            <img src="/images/bm_KO_lg.jpg" alt="Bible Ministry">
+            <div class="slider-text">"팜플렛 및 소책자"</div>
+        </div>
+        <div>
+            <img src="/images/kt_KO_lg.jpg" alt="Kingdom Teachings">
+            <div class="slider-text">"전도지"</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: true
+            });
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://cdn.pixabay.com/photo/2016/11/18/17/19/books-1835019_1280.jpg'); /* 도서관 배경 이미지 */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .slider {
+            width: auto;
+            max-width: 600px; /* 슬라이더 크기 조금 더 키움 */
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); /* 반투명한 배경 */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 박스에 그림자 효과 추가 */
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slick-prev, .slick-next {
+            font-size: 20px;
+            z-index: 1;
+        }
+
+        .slick-prev:before, .slick-next:before {
+            color: #333; /* 화살표 색 변경 */
+        }
+
+        .slider-text {
+            text-align: center;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .slick-dots li button:before {
+            color: #333; /* 슬라이더 점 색 변경 */
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div>
+            <img src="/images/nwt_KO_lg.jpg" alt="Bible">
+            <div class="slider-text">"성경"</div>
+        </div>
+        <div>
+            <img src="/images/202016408_KO_cnt_1_md.jpg" alt="2020 Magazine">
+            <div class="slider-text">"봉사도구함"</div>
+        </div>
+        <div>
+            <img src="/images/bh_KO_lg.jpg" alt="Bible History">
+            <div class="slider-text">"서적"</div>
+        </div>
+        <div>
+            <img src="/images/bm_KO_lg.jpg" alt="Bible Ministry">
+            <div class="slider-text">"팜플렛 및 소책자"</div>
+        </div>
+        <div>
+            <img src="/images/kt_KO_lg.jpg" alt="Kingdom Teachings">
+            <div class="slider-text">"전도지"</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                arrows: true
+            });
+        });
+    </script>
+</body>
+</html>

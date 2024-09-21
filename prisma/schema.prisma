@@ -1,0 +1,339 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Form {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(255)
+  item_code      String?          @unique(map: "unique_item_code") @db.VarChar(50)
+  quantity       Int?             @default(0)
+  language       String?          @db.VarChar(50)
+  initial        String?          @db.VarChar(50)
+  image_url      String?          @db.Text
+  create_at      DateTime?        @default(now()) @db.Timestamp(0)
+  update_at      DateTime?        @default(now()) @db.Timestamp(0)
+  Form_inventory Form_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+}
+
+model Pamphlets_Booklets {
+  id                           Int                            @id @default(autoincrement())
+  name                         String                         @db.VarChar(255)
+  item_code                    String?                        @unique(map: "unique_item_code") @db.VarChar(50)
+  quantity                     Int?                           @default(0)
+  language                     String?                        @db.VarChar(50)
+  initial                      String?                        @db.VarChar(50)
+  image_url                    String?                        @db.Text
+  create_at                    DateTime?                      @default(now()) @db.Timestamp(0)
+  update_at                    DateTime?                      @default(now()) @db.Timestamp(0)
+  Pamphlets_Booklets_inventory Pamphlets_Booklets_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+  @@map("Pamphlets&Booklets")
+}
+
+model TRACTS {
+  id               Int                @id @default(autoincrement())
+  name             String             @db.VarChar(255)
+  item_code        String?            @unique(map: "unique_item_code") @db.VarChar(50)
+  quantity         Int?               @default(0)
+  language         String?            @db.VarChar(50)
+  initial          String?            @db.VarChar(50)
+  image_url        String?            @db.Text
+  create_at        DateTime?          @default(now()) @db.Timestamp(0)
+  update_at        DateTime?          @default(now()) @db.Timestamp(0)
+  TRACTS_inventory TRACTS_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+}
+
+model Teaching_Toolbox {
+  id                         Int                          @id @default(autoincrement())
+  name                       String                       @db.VarChar(255)
+  item_code                  String?                      @db.VarChar(50)
+  quantity                   Int?                         @default(0)
+  language                   String?                      @db.VarChar(50)
+  initial                    String?                      @db.VarChar(50)
+  image_url                  String?                      @db.Text
+  create_at                  DateTime?                    @default(now()) @db.Timestamp(0)
+  update_at                  DateTime?                    @default(now()) @db.Timestamp(0)
+  Teaching_Toolbox_inventory Teaching_Toolbox_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+}
+
+model Video_DVD {
+  id                  Int                   @id @default(autoincrement())
+  name                String                @db.VarChar(255)
+  item_code           String?               @unique(map: "unique_item_code") @db.VarChar(50)
+  quantity            Int?                  @default(0)
+  language            String?               @db.VarChar(50)
+  initial             String?               @db.VarChar(50)
+  image_url           String?               @db.Text
+  create_at           DateTime?             @default(now()) @db.Timestamp(0)
+  update_at           DateTime?             @default(now()) @db.Timestamp(0)
+  Video_DVD_inventory Video_DVD_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+  @@map("Video/DVD")
+}
+
+model bible {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(255)
+  item_code       String?           @unique(map: "unique_item_code") @db.VarChar(50)
+  quantity        Int?              @default(0)
+  language        String?           @db.VarChar(50)
+  initial         String?           @db.VarChar(50)
+  image_url       String?           @db.Text
+  create_at       DateTime?         @default(now()) @db.Timestamp(0)
+  update_at       DateTime?         @default(now()) @db.Timestamp(0)
+  bible_inventory bible_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+}
+
+model books {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(255)
+  item_code       String?           @unique(map: "unique_item_code") @db.VarChar(50)
+  quantity        Int?              @default(0)
+  language        String?           @db.VarChar(50)
+  initial         String?           @db.VarChar(50)
+  image_url       String?           @db.Text
+  create_at       DateTime?         @default(now()) @db.Timestamp(0)
+  update_at       DateTime?         @default(now()) @db.Timestamp(0)
+  books_inventory books_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+}
+
+model books_Large_Size_Edition {
+  id                                 Int                                  @id @default(autoincrement())
+  name                               String                               @db.VarChar(255)
+  item_code                          String?                              @db.VarChar(50)
+  quantity                           Int?                                 @default(0)
+  language                           String?                              @db.VarChar(50)
+  initial                            String?                              @db.VarChar(50)
+  image_url                          String?                              @db.Text
+  create_at                          DateTime?                            @default(now()) @db.Timestamp(0)
+  update_at                          DateTime?                            @default(now()) @db.Timestamp(0)
+  books_Large_Size_Edition_inventory books_Large_Size_Edition_inventory[]
+
+  @@index([item_code], map: "idx_item_code")
+  @@map("books_Large-Size_Edition")
+}
+
+model book_requests {
+  id                Int       @id @default(autoincrement())
+  publisher_id      Int
+  publisher_name    String    @db.VarChar(255)
+  book_name         String    @db.VarChar(255)
+  request_year      Int
+  jan_received      Boolean?  @default(false)
+  jan_received_date DateTime? @db.Date
+  feb_received      Boolean?  @default(false)
+  feb_received_date DateTime? @db.Date
+  mar_received      Boolean?  @default(false)
+  mar_received_date DateTime? @db.Date
+  apr_received      Boolean?  @default(false)
+  apr_received_date DateTime? @db.Date
+  may_received      Boolean?  @default(false)
+  may_received_date DateTime? @db.Date
+  jun_received      Boolean?  @default(false)
+  jun_received_date DateTime? @db.Date
+  jul_received      Boolean?  @default(false)
+  jul_received_date DateTime? @db.Date
+  aug_received      Boolean?  @default(false)
+  aug_received_date DateTime? @db.Date
+  sep_received      Boolean?  @default(false)
+  sep_received_date DateTime? @db.Date
+  oct_received      Boolean?  @default(false)
+  oct_received_date DateTime? @db.Date
+  nov_received      Boolean?  @default(false)
+  nov_received_date DateTime? @db.Date
+  dec_received      Boolean?  @default(false)
+  dec_received_date DateTime? @db.Date
+  created_at        DateTime? @default(now()) @db.Timestamp(0)
+  updated_at        DateTime? @default(now()) @db.Timestamp(0)
+
+  @@index([publisher_id], map: "idx_publisher_id")
+  @@index([publisher_name], map: "idx_publisher_name")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Form_inventory {
+  id        Int    @id @default(autoincrement())
+  item_code String @db.VarChar(50)
+  sep_in    Int?   @default(0)
+  sep_stock Int?   @default(0)
+  oct_in    Int?   @default(0)
+  oct_stock Int?   @default(0)
+  nov_in    Int?   @default(0)
+  nov_stock Int?   @default(0)
+  dec_in    Int?   @default(0)
+  dec_stock Int?   @default(0)
+  jan_in    Int?   @default(0)
+  jan_stock Int?   @default(0)
+  feb_in    Int?   @default(0)
+  feb_stock Int?   @default(0)
+  Form      Form   @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "form_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Pamphlets_Booklets_inventory {
+  id                 Int                @id @default(autoincrement())
+  item_code          String             @db.VarChar(50)
+  sep_in             Int?               @default(0)
+  sep_stock          Int?               @default(0)
+  oct_in             Int?               @default(0)
+  oct_stock          Int?               @default(0)
+  nov_in             Int?               @default(0)
+  nov_stock          Int?               @default(0)
+  dec_in             Int?               @default(0)
+  dec_stock          Int?               @default(0)
+  jan_in             Int?               @default(0)
+  jan_stock          Int?               @default(0)
+  feb_in             Int?               @default(0)
+  feb_stock          Int?               @default(0)
+  Pamphlets_Booklets Pamphlets_Booklets @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "pamphlets&booklets_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+  @@map("Pamphlets&Booklets_inventory")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TRACTS_inventory {
+  id        Int    @id @default(autoincrement())
+  item_code String @db.VarChar(50)
+  sep_in    Int?   @default(0)
+  sep_stock Int?   @default(0)
+  oct_in    Int?   @default(0)
+  oct_stock Int?   @default(0)
+  nov_in    Int?   @default(0)
+  nov_stock Int?   @default(0)
+  dec_in    Int?   @default(0)
+  dec_stock Int?   @default(0)
+  jan_in    Int?   @default(0)
+  jan_stock Int?   @default(0)
+  feb_in    Int?   @default(0)
+  feb_stock Int?   @default(0)
+  TRACTS    TRACTS @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "tracts_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Teaching_Toolbox_inventory {
+  id               Int              @id @default(autoincrement())
+  item_code        String           @db.VarChar(50)
+  sep_in           Int?             @default(0)
+  sep_stock        Int?             @default(0)
+  oct_in           Int?             @default(0)
+  oct_stock        Int?             @default(0)
+  nov_in           Int?             @default(0)
+  nov_stock        Int?             @default(0)
+  dec_in           Int?             @default(0)
+  dec_stock        Int?             @default(0)
+  jan_in           Int?             @default(0)
+  jan_stock        Int?             @default(0)
+  feb_in           Int?             @default(0)
+  feb_stock        Int?             @default(0)
+  Teaching_Toolbox Teaching_Toolbox @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "teaching_toolbox_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Video_DVD_inventory {
+  id        Int       @id @default(autoincrement())
+  item_code String    @db.VarChar(50)
+  sep_in    Int?      @default(0)
+  sep_stock Int?      @default(0)
+  oct_in    Int?      @default(0)
+  oct_stock Int?      @default(0)
+  nov_in    Int?      @default(0)
+  nov_stock Int?      @default(0)
+  dec_in    Int?      @default(0)
+  dec_stock Int?      @default(0)
+  jan_in    Int?      @default(0)
+  jan_stock Int?      @default(0)
+  feb_in    Int?      @default(0)
+  feb_stock Int?      @default(0)
+  Video_DVD Video_DVD @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "video/dvd_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+  @@map("Video/DVD_inventory")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model bible_inventory {
+  id        Int    @id @default(autoincrement())
+  item_code String @db.VarChar(50)
+  sep_in    Int?   @default(0)
+  sep_stock Int?   @default(0)
+  oct_in    Int?   @default(0)
+  oct_stock Int?   @default(0)
+  nov_in    Int?   @default(0)
+  nov_stock Int?   @default(0)
+  dec_in    Int?   @default(0)
+  dec_stock Int?   @default(0)
+  jan_in    Int?   @default(0)
+  jan_stock Int?   @default(0)
+  feb_in    Int?   @default(0)
+  feb_stock Int?   @default(0)
+  bible     bible  @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "bible_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model books_Large_Size_Edition_inventory {
+  id                       Int                      @id @default(autoincrement())
+  item_code                String                   @db.VarChar(50)
+  sep_in                   Int?                     @default(0)
+  sep_stock                Int?                     @default(0)
+  oct_in                   Int?                     @default(0)
+  oct_stock                Int?                     @default(0)
+  nov_in                   Int?                     @default(0)
+  nov_stock                Int?                     @default(0)
+  dec_in                   Int?                     @default(0)
+  dec_stock                Int?                     @default(0)
+  jan_in                   Int?                     @default(0)
+  jan_stock                Int?                     @default(0)
+  feb_in                   Int?                     @default(0)
+  feb_stock                Int?                     @default(0)
+  books_Large_Size_Edition books_Large_Size_Edition @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "books_large-size_edition_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+  @@map("books_Large-Size_Edition_inventory")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model books_inventory {
+  id        Int    @id @default(autoincrement())
+  item_code String @db.VarChar(50)
+  sep_in    Int?   @default(0)
+  sep_stock Int?   @default(0)
+  oct_in    Int?   @default(0)
+  oct_stock Int?   @default(0)
+  nov_in    Int?   @default(0)
+  nov_stock Int?   @default(0)
+  dec_in    Int?   @default(0)
+  dec_stock Int?   @default(0)
+  jan_in    Int?   @default(0)
+  jan_stock Int?   @default(0)
+  feb_in    Int?   @default(0)
+  feb_stock Int?   @default(0)
+  books     books  @relation(fields: [item_code], references: [item_code], onDelete: NoAction, onUpdate: NoAction, map: "books_inventory_ibfk_1")
+
+  @@index([item_code], map: "item_code")
+}

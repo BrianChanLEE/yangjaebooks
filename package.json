@@ -1,0 +1,31 @@
+{
+  "name": "yangjaebooks",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrianChanLEE/yangjaebooks.git"
+  },
+  "author": "Chan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrianChanLEE/yangjaebooks/issues"
+  },
+  "homepage": "https://github.com/BrianChanLEE/yangjaebooks#readme",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "mysql2": "^3.11.3",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.1.5",
+    "prisma": "^5.19.1",
+    "winston": "^3.14.2"
+  }
+}
